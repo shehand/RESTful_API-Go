@@ -5,7 +5,7 @@ import (
 	"net/http"
 )
 
-func Messege(status bool, messege string, )(map[string]interface{}){
+func Message(status bool, messege string, )(map[string]interface{}){
 	return map[string]interface{}{"status" : status, "messege": messege}
 }
 

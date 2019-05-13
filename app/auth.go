@@ -1,14 +1,14 @@
 package app
 
-import(
-	"net/http"
-	u "../utils"
-	"strings"
-	jwt "github.com/dgrijalva/jwt-go"
+import (
 	"../models"
-	"os"
+	u "../utils"
 	"context"
 	"fmt"
+	jwt "github.com/dgrijalva/jwt-go"
+	"net/http"
+	"os"
+	"strings"
 )
 
 var JwtAuthentication = func(next http.Handler) http.Handler {
