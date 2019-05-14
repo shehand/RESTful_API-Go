@@ -1,10 +1,10 @@
 package controllers
 
 import (
-	"net/http"
-	u "../utils"
 	"../models"
+	u "../utils"
 	"encoding/json"
+	"net/http"
 )
 
 var CreateAccount = func(w http.ResponseWriter, r *http.Request) {
