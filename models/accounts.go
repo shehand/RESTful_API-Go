@@ -69,3 +69,13 @@ func (account *Account) Create()(map[string]interface{}){
 	return  resp
 }
 
+func GetUser(u uint) * Account {
+	acc := &Account{}
+	GetDB().Table("accounts").Where("id=?",u).First(acc)
+	if acc.Email == "" {
+		return nil
+	}
+
+	acc.Password = ""
+	return acc
+}
