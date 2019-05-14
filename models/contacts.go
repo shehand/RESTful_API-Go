@@ -30,3 +30,17 @@ func (contact *Contact) Validate() (map[string] interface{}, bool) {
 	//All the required parameters are present
 	return u.Message(true, "success"), true
 }
+
+func (contact *Contact) Create() (map[string] interface{}) {
+
+	if resp, ok := contact.Validate(); !ok {
+		return resp
+	}
+
+	GetDB().Create(contact)
+
+	resp := u.Message(true, "success")
+	resp["contact"] = contact
+	return resp
+}
+
