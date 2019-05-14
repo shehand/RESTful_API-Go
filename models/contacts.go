@@ -44,3 +44,12 @@ func (contact *Contact) Create() (map[string] interface{}) {
 	return resp
 }
 
+func GetContact(id uint) (*Contact) {
+
+	contact := &Contact{}
+	err := GetDB().Table("contacts").Where("id = ?", id).First(contact).Error
+	if err != nil {
+		return nil
+	}
+	return contact
+}
