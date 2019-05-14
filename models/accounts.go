@@ -59,5 +59,13 @@ func (account *Account) Create()(map[string]interface{}){
 		return u.Message(false, "Failed to create account, connection error.")
 	}
 
-	
+	tk:=&Token{UserId: account.ID}
+	token := jwt.NewWithClaims(jwt.GetSigningMethod("HS256"),tk)
+	tokenString, _ := token.SignedString([]byte (os.Getenv("token_password")))
+	account.Token = tokenString
+
+	resp := u.Message(true,"Logged In")
+	resp["account"] = account
+	return  resp
 }
+
