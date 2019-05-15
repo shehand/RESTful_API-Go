@@ -34,4 +34,16 @@ func (address *Address) Validate() (map[string] interface{}, bool) {
 	//All the required parameters are present
 	return u.Message(true, "success"), true
 }
-func (address *Address) Create()
+func (address *Address) Create()(map[string]interface{}){
+	if resp, ok := address.Validate(); !ok {
+		return resp
+	}
+
+	GetDB().Create(address)
+
+	resp := u.Message(true, "success")
+	resp["address"] = address
+	return resp
+}
+
+func
