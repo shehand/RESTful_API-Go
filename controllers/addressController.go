@@ -8,7 +8,20 @@ import (
 	"strconv"
 )
 
-func CreateAddresses(){}
+var CreateAddresses = func (w http.ResponseWriter, r *http.Request){
+	user := r.Context().Value("user") . (uint) //Grab the id of the user that send the request
+	address := &models.Address{}
+
+	err := json.NewDecoder(r.Body).Decode(address)
+	if err != nil {
+		u.Respond(w, u.Message(false, "Error while decoding request body"))
+		return
+	}
+
+	address.UserId = user
+	resp := address.Create()
+	u.Respond(w, resp)
+}
 
 var GetAddresses = func (w http.ResponseWriter, r *http.Request){
 	params := mux.Vars(r)
