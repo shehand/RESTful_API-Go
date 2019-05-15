@@ -46,4 +46,20 @@ func (address *Address) Create()(map[string]interface{}){
 	return resp
 }
 
-func
+func GetAddress(id uint)(*Address){
+	address := &Address{}
+	err := GetDB().Table("addresses").Where("id = ?", id).First(address).Error
+	if err != nil {
+		return nil
+	}
+	return address
+}
+
+func GetAddress(id uint)(*Address){
+	address := &Address{}
+	err := GetDB().Table("addresses").Where("id = ?", id).First(address).Error
+	if err != nil {
+		return nil
+	}
+	return address
+}
