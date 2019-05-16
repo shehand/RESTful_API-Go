@@ -23,8 +23,11 @@ func (user *User) Validate() (map[string]interface{}, bool)  {
 		return u.Message(false, "Email address should not be empty"), false
 	}
 	if user.FirstName == "" {
-		return u.Message(false, "Contact first name should be on the payload"), false
+		return u.Message(false, "User first name should be on the payload"), false
 	}
-	
+	if user.DOB == "" {
+		return u.Message(false, "User date of birth should be on the payload"), false
+	}
+
 	return u.Message(false, "Requirement passed"), true
 }
