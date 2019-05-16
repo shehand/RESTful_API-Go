@@ -31,3 +31,16 @@ func (user *User) Validate() (map[string]interface{}, bool)  {
 
 	return u.Message(false, "Requirement passed"), true
 }
+
+func (user *User)Create()(map[string]interface{})  {
+
+	if resp, ok := user.Validate(); !ok {
+		return resp
+	}
+
+	GetDB().Create(user)
+
+	resp := u.Message(true, "success")
+	resp["user"] = user
+	return resp
+}
