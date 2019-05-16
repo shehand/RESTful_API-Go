@@ -1,5 +1,7 @@
 # RESTful_API service - Go
 
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/56fdcd3089994d75b55e3fe1303ef447)](https://app.codacy.com/app/shehand/RESTful_API-Go?utm_source=github.com&utm_medium=referral&utm_content=shehand/RESTful_API-Go&utm_campaign=Badge_Grade_Dashboard)
+
 ## Installation
 
 First of all make sure to install Go Programming Language
