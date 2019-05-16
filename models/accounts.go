@@ -21,7 +21,7 @@ type Account struct {
 	Token string `json:"token";sql:"-"`
 }
 
-func (account  *Account) Validate() (map[string]interface{}, bool){
+func (account  *Account) ValidateAccount() (map[string]interface{}, bool){
 	if !strings.Contains(account .Email,"@"){
 		return u.Message(false, "Email address is required"), false
 	}
@@ -45,8 +45,8 @@ func (account  *Account) Validate() (map[string]interface{}, bool){
 	return u.Message(false, "Requirement passed"), true
 }
 
-func (account *Account) Create()(map[string]interface{}){
-	if resp, ok := account.Validate(); !ok{
+func (account *Account) CreateAccount()(map[string]interface{}){
+	if resp, ok := account.ValidateAccount(); !ok{
 		return resp
 	}
 
