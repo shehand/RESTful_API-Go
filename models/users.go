@@ -44,3 +44,13 @@ func (user *User)Create()(map[string]interface{})  {
 	resp["user"] = user
 	return resp
 }
+
+func GetRegisteredUser (id uint)(*User){
+
+	user := &User{}
+	err := GetDB().Table("users").Where("id = ?", id).First(user).Error
+	if err != nil {
+		return nil
+	}
+	return user
+}
