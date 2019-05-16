@@ -13,7 +13,7 @@ type Contact struct {
 	UserId uint `json:"user_id"` //The user that this contact belongs to
 }
 
-func (contact *Contact) Validate() (map[string] interface{}, bool) {
+func (contact *Contact) ValidateContact() (map[string] interface{}, bool) {
 
 	if contact.Name == "" {
 		return u.Message(false, "Contact name should be on the payload"), false
@@ -31,9 +31,9 @@ func (contact *Contact) Validate() (map[string] interface{}, bool) {
 	return u.Message(true, "success"), true
 }
 
-func (contact *Contact) Create() (map[string] interface{}) {
+func (contact *Contact) CreateContact() (map[string] interface{}) {
 
-	if resp, ok := contact.Validate(); !ok {
+	if resp, ok := contact.ValidateContact(); !ok {
 		return resp
 	}
 
