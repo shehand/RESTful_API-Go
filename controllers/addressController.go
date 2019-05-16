@@ -33,7 +33,7 @@ var GetAddresses = func (w http.ResponseWriter, r *http.Request){
 		return
 	}
 
-	data := models.GetAddressByUserId(uint(userId))
+	data := models.GetAddressByUserID(uint(userId))
 	resp := u.Message(true, "success")
 	resp["data"] = data
 	u.Respond(w, resp)
@@ -48,7 +48,7 @@ var GetAddress = func(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	data := models.GetAddressById(uint(id))
+	data := models.GetAddressByID(uint(id))
 	resp := u.Message(true, "success")
 	resp["data"] = data
 	u.Respond(w, resp)
