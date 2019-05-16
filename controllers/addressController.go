@@ -20,7 +20,7 @@ var CreateAddresses = func (w http.ResponseWriter, r *http.Request){
 	}
 
 	address.UserId = user
-	resp := address.Create()
+	resp := address.CreateAddress()
 	u.Respond(w, resp)
 }
 
