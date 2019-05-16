@@ -2,7 +2,6 @@ package models
 
 import (
 	u "../utils"
-	"fmt"
 	"github.com/jinzhu/gorm"
 )
 
@@ -17,7 +16,7 @@ type Address struct {
 	UserId uint `json:"user_id"` //The user that this contact belongs to
 }
 
-func (address *Address) Validate() (map[string] interface{}, bool) {
+func (address *Address) ValidateAddress() (map[string] interface{}, bool) {
 
 	if address.PostalCode == "" {
 		return u.Message(false, "Postal code should be on the payload"), false
@@ -34,8 +33,8 @@ func (address *Address) Validate() (map[string] interface{}, bool) {
 	//All the required parameters are present
 	return u.Message(true, "success"), true
 }
-func (address *Address) Create()(map[string]interface{}){
-	if resp, ok := address.Validate(); !ok {
+func (address *Address) CreateAddress()(map[string]interface{}){
+	if resp, ok := address.ValidateAddress(); !ok {
 		return resp
 	}
 
