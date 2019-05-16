@@ -2,7 +2,6 @@ package models
 
 import (
 	u "../utils"
-	"fmt"
 	"github.com/jinzhu/gorm"
 	"strings"
 )
@@ -15,7 +14,7 @@ type User struct {
 	Email string `json:"email"`
 }
 
-func (user *User) Validate() (map[string]interface{}, bool)  {
+func (user *User) ValidateUser() (map[string]interface{}, bool)  {
 	if !strings.Contains(user.Email,"@"){
 		return u.Message(false, "Email address is required"), false
 	}
@@ -32,9 +31,9 @@ func (user *User) Validate() (map[string]interface{}, bool)  {
 	return u.Message(false, "Requirement passed"), true
 }
 
-func (user *User)Create()(map[string]interface{})  {
+func (user *User)CreateUser()(map[string]interface{})  {
 
-	if resp, ok := user.Validate(); !ok {
+	if resp, ok := user.ValidateUser(); !ok {
 		return resp
 	}
 
