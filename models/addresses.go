@@ -45,7 +45,7 @@ func (address *Address) CreateAddress()(map[string]interface{}){
 	return resp
 }
 
-func GetAddressById(id uint)(*Address){
+func GetAddressByID(id uint)(*Address){
 	address := &Address{}
 	err := GetDB().Table("addresses").Where("id = ?", id).First(address).Error
 	if err != nil {
@@ -54,7 +54,7 @@ func GetAddressById(id uint)(*Address){
 	return address
 }
 
-func GetAddressByUserId(user uint)([]*Address){
+func GetAddressByUserID(user uint)([]*Address){
 
 	address := make([]*Address, 0)
 	err := GetDB().Table("addresses").Where("user_id = ?", user).First(address).Error
