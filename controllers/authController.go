@@ -15,7 +15,7 @@ var CreateAccount = func(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	resp := account.Create() //Create account
+	resp := account.CreateAccount() //Create account
 	u.Respond(w, resp)
 }
 
