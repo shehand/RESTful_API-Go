@@ -19,6 +19,8 @@ func main(){
 	router.HandleFunc("/api/me/contacts", controllers.CreateContact).Methods("POST")
 	router.HandleFunc("/api/me/addresses", controllers.GetAddresses).Methods("GET")
 	router.HandleFunc("/api/me/addresses", controllers.CreateAddresses).Methods("POST")
+	router.HandleFunc("/api/me/user", controllers.GetUser).Methods("GET")
+	
 
 	port:= os.Getenv("PORT")
 	if(port == ""){
