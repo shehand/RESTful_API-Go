@@ -2,13 +2,20 @@ package utils
 
 import (
 	"context"
-	"log"
-	"time"
-	 firebase "firebase.google.com/go"
+	firebase "firebase.google.com/go"
 	"firebase.google.com/go/db"
+	"log"
 )
 
 var client *db.Client
+
+type Config struct {
+	AuthOverride     *map[string]interface{} `json:"databaseAuthVariableOverride"`
+	DatabaseURL      string                  `json:"databaseURL"`
+	ProjectID        string                  `json:"projectId"`
+	ServiceAccountID string                  `json:"serviceAccountId"`
+	StorageBucket    string                  `json:"storageBucket"`
+}
 
 func init(){
 	ctx := context.Background()
