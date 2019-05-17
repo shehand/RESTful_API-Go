@@ -3,6 +3,7 @@ package utils
 import (
 	"context"
 	firebase "firebase.google.com/go"
+	"firebase.google.com/go/auth"
 	"firebase.google.com/go/db"
 	"google.golang.org/api/option"
 	"log"
@@ -39,4 +40,12 @@ func init(){
 	}
 }
 
-func NewApp(ctx context.Context, config *Config, opts ...option.ClientOption) (*App, error){}
+func NewApp(ctx context.Context, config *Config, opts ...option.ClientOption) (*App, string){
+	err := "error"
+	return &App{}, err
+}
+
+func (a *App) Auth(ctx context.Context) (*auth.Client, string){
+	err := "error"
+	return <auth clinet>, err
+}
