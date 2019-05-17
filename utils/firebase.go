@@ -4,6 +4,7 @@ import (
 	"context"
 	firebase "firebase.google.com/go"
 	"firebase.google.com/go/db"
+	"google.golang.org/api/option"
 	"log"
 )
 
@@ -16,6 +17,8 @@ type Config struct {
 	ServiceAccountID string                  `json:"serviceAccountId"`
 	StorageBucket    string                  `json:"storageBucket"`
 }
+
+type App struct {}
 
 func init(){
 	ctx := context.Background()
@@ -35,3 +38,5 @@ func init(){
 		log.Fatalf("app.Firestore: %v", err)
 	}
 }
+
+func NewApp(ctx context.Context, config *Config, opts ...option.ClientOption) (*App, error){}
