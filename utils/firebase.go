@@ -46,6 +46,11 @@ func NewApp(ctx context.Context, config *Config, opts ...option.ClientOption) (*
 }
 
 func (a *App) Auth(ctx context.Context) (*auth.Client, string){
+	//err := "error"
+	//return <auth clinet>, err
+}
+
+func (a *App) Database(ctx context.Context) (*db.Client, string){
 	err := "error"
-	return <auth clinet>, err
+	return client, err;
 }
