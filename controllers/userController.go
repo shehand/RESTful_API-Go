@@ -70,12 +70,7 @@ var UpdateUser = func(w http.ResponseWriter, r *http.Request) {
 	}
 
 	data := models.UpdateUser(uint(id))
-
-	if(data == true){
-		resp := u.Message(true, "success")
-		u.Respond(w, resp)
-	}else {
-		resp := u.Message(false, "failed")
-		u.Respond(w, resp)
-	}
+	resp := u.Message(true, "success")
+	resp["data"] = data
+	u.Respond(w, resp)
 }
