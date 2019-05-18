@@ -39,8 +39,8 @@ var GetUser = func(w http.ResponseWriter, r *http.Request) {
 }
 
 var DeleteUser = func(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 
+	params := mux.Vars(r)
 	id, err := strconv.Atoi(params["id"])
 	if err != nil {
 		//The passed path parameter is not an integer
@@ -49,6 +49,27 @@ var DeleteUser = func(w http.ResponseWriter, r *http.Request) {
 	}
 
 	data := models.DeleteUser(uint(id))
+
+	if(data == true){
+		resp := u.Message(true, "success")
+		u.Respond(w, resp)
+	}else {
+		resp := u.Message(false, "failed")
+		u.Respond(w, resp)
+	}
+}
+
+var UpdateUser = func(w http.ResponseWriter, r *http.Request) {
+
+	params := mux.Vars(r)
+	id, err := strconv.Atoi(params["id"])
+	if err != nil {
+		//The passed path parameter is not an integer
+		u.Respond(w, u.Message(false, "There was an error in your request"))
+		return
+	}
+
+	data := models.UpdateUser(uint(id))
 
 	if(data == true){
 		resp := u.Message(true, "success")
