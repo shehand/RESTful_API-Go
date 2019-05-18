@@ -65,3 +65,7 @@ func DeleteUser (id uint)(bool){
 	GetDB().Table("users").Delete(id)
 	return true
 }
+
+func UpdateUser (id uint)(*User){
+
+}
