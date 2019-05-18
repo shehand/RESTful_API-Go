@@ -37,3 +37,5 @@ var GetUser = func(w http.ResponseWriter, r *http.Request) {
 	resp["data"] = data
 	u.Respond(w, resp)
 }
+
+var DeleteUser = func(w http.ResponseWriter, r *http.Request) {}
