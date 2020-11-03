@@ -1,0 +1,21 @@
+name: Image_Build
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  docker_build_and_push:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Build container image for the swimming pool reservation system using Docker
+      uses: actions/checkout@v2    
+    - name: Push to GitHub Packages
+      uses: docker/build-push-action@v1
+      with:
+        username: ${{ github.actor }}
+        password: ${{ secrets.GH_TOKEN }}
+        registry: docker.pkg.github.com
+        tags: latest  
+        tag_with_ref: true
